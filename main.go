@@ -41,10 +41,10 @@ func main() {
 			fmt.Fprintf(os.Stderr, "error closing file`: %v\n", err)
 			return
 		}
-		next = resp.Meta.Page.After
-		if next == nil {
+		if resp.Meta == nil || resp.Meta.Page == nil || resp.Meta.Page.After == nil {
 			break
 		}
+		next = resp.Meta.Page.After
 		fmt.Printf("finshed page %d\n", i)
 		i++
 	}
